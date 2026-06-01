@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Direcciones IP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Calculadora de Direcciones IP</h1>
+
+    <!-- Formulario interactivo -->
+    <form id="formulario">
+        <label for="ip">Dirección IP:
+            <input type="text" id="ip" placeholder="Ej: 192.168.1.1">
+        </label>
+        <button type="submit">Calcular</button>
+    </form>
+
+    <!-- Resultados dinámicos -->
+    <section id="resultado">
+        <h2>Resultados</h2>
+        <p id="clase">Clase: -</p>
+        <p id="mascara">Máscara por defecto: -</p>
+        <p id="host">Hosts disponibles: -</p>
+    </section>
+
+    <!-- Bloque educativo -->
+    <section id="teoria">
+        <h2>Conceptos aplicados</h2>
+        <ul>
+            <li><strong>Tipos de variables:</strong> var, let, const.</li>
+            <li><strong>Tipos de datos:</strong> string, number, boolean, object, array, undefined, null.</li>
+            <li><strong>Operadores:</strong> potencias para calcular los hosts.</li>
+            <li><strong>Condicionales:</strong> if...else para determinar la clase IP.</li>
+            <li><strong>Ciclos:</strong> for clásico para recorrer octetos.</li>
+            <li><strong>Funciones:</strong> calcularClase() para encapsular la lógica.</li>
+        </ul>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

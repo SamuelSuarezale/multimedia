@@ -1,0 +1,65 @@
+/*Fuente y fondo */
+body{
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/*Navbar institucional*/
+.navbar-unipamplona{
+    background-color: #003366; /*Azul institucional*/
+
+}
+
+.navbar-unipamplona .nav-link{
+    color: #fff;
+}
+
+.navbar-unipamplona .nav-link:hover{
+    color: #ad3333; /*Rojo institucional*/
+}
+
+/*Hero*/
+.hero-section{
+    margin-top: 40px;
+}
+/*Ajustar tamaño de las imágenes del carousel*/
+/*Ajustar tamaño de las imágenes del carousel*/
+.hero-slide {
+    width: 250vh;             /* Aumenta el ancho visible del slide */
+    height: 150vh;            /* Aumenta la altura visible del slide */
+    background-size: cover;  /* Hace que la imagen se expanda sin deformarse */
+    background-position: center; /* Centra la imagen */
+}
+
+/* Mejora de visibilidad del texto del hero */
+.hero-content {
+    padding: 40px;
+    border-radius: 10px;
+    color: #fff; /* Texto blanco para contraste */
+}
+/* Hace visible el texto del segundo slide (Laboratorios de Última Generación) */
+.hero-slide .container {
+    background: rgba(0, 0, 0, 0.5); /* Fondo negro semitransparente */
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff; /* Texto blanco */
+}
+
+
+/*Stats*/
+.stat-box{
+    font-size:1.5rem;
+    font-weight: bold;
+}
+
+/*Footer*/
+.footer-main{
+    background-color: #003366;
+    color:#fff;
+    padding: 40px 0;
+}
+
+.footer-main a{
+    color: #ad3333;
+    text-decoration: none;
+}

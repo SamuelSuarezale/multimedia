@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Organizada</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .bg-primary-tailwind {
+            background-color: #3b82f6; /* Blue 500 */
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto mt-5">
+        <h1 class="text-center text-4xl font-extrabold text-gray-800 mb-8">
+            Plan de Estudios
+        </h1>
+
+        <!-- Tarjeta Contenedora -->
+        <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-100">
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-primary-tailwind text-white rounded-t-lg">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-xl">
+                                Semestre
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
+                                Asignatura
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">
+                                Créditos
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-xl">
+                                Tipo
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-malla" class="bg-white divide-y divide-gray-100">
+                        <!-- El contenido se inyectará aquí con JavaScript -->
+                        <tr><td colspan="4" class="py-4 text-center text-gray-500 italic">Cargando datos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Datos simulados para demostrar la funcionalidad, ya que la URL local no funciona en este entorno.
+        const mockData = [
+            { semestre: 1, asignatura: "Introducción a la Programación", creditos: 3, tipo: "Obligatoria" },
+            { semestre: 1, asignatura: "Cálculo Diferencial", creditos: 4, tipo: "Obligatoria" },
+            { semestre: 2, asignatura: "Estructuras de Datos Avanzadas", creditos: 4, tipo: "Obligatoria" },
+            { semestre: 2, asignatura: "Álgebra Lineal", creditos: 3, tipo: "Obligatoria" },
+            { semestre: 3, asignatura: "Bases de Datos Relacionales", creditos: 4, tipo: "Obligatoria" },
+            { semestre: 3, asignatura: "Metodologías Ágiles y Scrum", creditos: 3, tipo: "Electiva" },
+            { semestre: 4, asignatura: "Desarrollo Web Full-Stack", creditos: 5, tipo: "Obligatoria" },
+            { semestre: 4, asignatura: "Estadística Aplicada", creditos: 3, tipo: "Obligatoria" },
+            { semestre: 5, asignatura: "Inteligencia Artificial", creditos: 4, tipo: "Electiva" },
+            { semestre: 6, asignatura: "Proyecto de Grado I", creditos: 6, tipo: "Trabajo de Grado" }
+        ];
+
+        // Función para simular la carga de datos (usando async/await para estructura limpia)
+        async function cargarMallaCurricular() {
+            const tabla = document.getElementById('tabla-malla');
+
+            try {
+                // Simulamos una espera de red de 500ms
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                // Si se usara el fetch real, sería:
+                // const response = await fetch(API_URL);
+                // if (!response.ok) { throw new Error('Error al cargar la red.'); }
+                // const data = await response.json();
+                const data = mockData; // Usamos los datos simulados
+
+                tabla.innerHTML = ''; // Limpiar el indicador de carga
+
+                data.forEach(item => {
+                    let badgeClass;
+                    // Asignar color de badge según el tipo
+                    switch (item.tipo) {
+                        case 'Obligatoria':
+                            badgeClass = 'bg-blue-500';
+                            break;
+                        case 'Electiva':
+                            badgeClass = 'bg-green-500';
+                            break;
+                        case 'Trabajo de Grado':
+                            badgeClass = 'bg-yellow-500 text-yellow-900';
+                            break;
+                        default:
+                            badgeClass = 'bg-gray-400';
+                    }
+
+                    tabla.innerHTML += `
+                        <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                            <td class="px-6 py-3 whitespace-nowrap text-sm font-medium text-gray-900">${item.semestre}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-700 font-semibold">${item.asignatura}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-600">${item.creditos}</td>
+                            <td class="px-6 py-3 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeClass} text-white">
+                                    ${item.tipo}
+                                </span>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+            } catch (err) {
+                // Completa el bloque catch faltante del código original
+                console.error('Error al cargar la malla curricular:', err);
+                tabla.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="py-4 text-center text-red-600 font-bold bg-red-50 rounded-b-lg">
+                            ❌ Error al cargar los datos: ${err.message}. Revise la conexión API.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // Ejecutar la función cuando el documento esté completamente cargado
+        document.addEventListener('DOMContentLoaded', cargarMallaCurricular);
+    </script>
+</body>
+</html>

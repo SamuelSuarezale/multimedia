@@ -1,0 +1,42 @@
+/*Estilos generales*/
+
+/*Estilos base para todo el documento */
+
+body{
+    font-family: Arial, sans-serif;/*Fuente principal, simple y legible*/
+    margin: 40px;                   /*Margenes externos alrededor del contenido*/
+    text-align: center;             /*Centra el texto de manera horizontal*/  
+    background: #f8f8f8;           /* Color de fondo gris y claro*/
+}
+
+/*Estilos para el titulo principal*/
+h1{
+    color: #b22222;/*Color rojo institucional (Universida de pamplona*/
+}
+
+/*Espaciado del formulario respecto a otros elementos*/
+form{
+    margin:20px;/*20px arriba y abajo, 0 a los 2 lados*/
+}
+
+/*Estilos del campo de texto(input)*/
+input{
+    padding: 8px;
+    margin-left: 10px;/*Separación a la izquierda del label*/
+    border: 1px solid #ccc;  /*Borde gris y claro*/
+    border-radius:6px; /*Bordes redondeados*/
+    width: 220px; /*Ancho fijo del campo de entrega*/
+}
+
+/*Secciones resiultados y teoria*/
+
+/*Estilos aplicados alos contenedore #Resultados y #Teoria*/
+#resultado, #teoria{
+    margin-top: 30px; /*Separación superior*/
+    background:white; /*Fondo blanco para contraste*/ 
+    padding: 20px;  /*Relleno interno*/
+    border-radius: 8px;  /*Bordes redondeados*/
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /*Sombra ligera para dar profundida*/
+    text-align: left;  /*Alineacion de texto a la izquierda*/
+}
+

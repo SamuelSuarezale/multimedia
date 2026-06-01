@@ -1,0 +1,96 @@
+<div class="container my-5">
+    <h2 class="text-center mb-4">
+        <i class="bi bi-journal-bookmark text-primary"></i>
+        Plan de Estudios - Ingenieria en Telecomunicaciones (9 Semestres)
+    </h2>
+
+    <!--Resumen Creditos-->
+
+    <div class="row mb-4 text-center">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h6> Total Créditos</h6>
+                    <h2>{{totralCreditos}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h6>Obligatorias</h6>
+                    <h2>{{creditosObligatorios}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h6>Electivas</h6>
+                    <h2>{{creditosElectivos}}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h6>Sociohumanisticas</h6>
+                    <h2>{{creditosSociohumanisticos}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-light border m-4">
+        <strong>Leyenda:</strong>
+        <span class="badge bg-primary">Obligatoria</span>
+        <span class="badge bg-success">Electiva</span>
+        <span class="badge bg-warning text-dark">Sociohumanistica</span>
+        <i class="bi bi-link-45deg text-dark"></i> Tiene Requisistos
+    </div>
+
+    <!--Acordeón de semestres-->
+    <div class="accordion" id="planAccordion">
+        <div class="accordion-item" *ngFor="let semestre of planEstudios">
+            <h2 class="accordion-header" [id]="'heading' +semestre.numero">
+                <button class="accordion-button" [class.collapsed]="semestre,numero>1" data-bs-toggle="collapse" 
+                    [attr.data-bs-target]="'#collapse'+semestre.numero">
+                <strong>Semestre {{semestre,numero}}</strong>
+                </button>
+            </h2>
+            <div [id]="'collapse'+semestre.numero"
+                class="accordion-collapse collapse"
+                [class.show]="semestre.numero===1">
+            <div class="accordion-body">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Asignatura</th>
+                            <th>Área</th>
+                            <th>Créditos</th>
+                            <th>Tipo</th>
+                            <th>Prerrequisitos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of semestre.asignaturas">
+                            <td>{{a.codigo}}</td>
+                            <td>{{a.nombre}}</td>
+                            <td>{{a.area}}</td>
+                            <td><span class="badge bg-dark">{{a.creditos}}></span></td>
+                            <td><span class="badge " [ngClass]="'bg-'+getTipoColor(a.tipo)">
+                                {{a.tipo | titlecase}}</span></td>
+                            <td>
+                                <span *ngIf="a.prerrequisitos?.length">
+                                <i class="bi bi-link-45deg text-danger"></i>
+                                {{a.prerrequisitos?.join(', ')}}
+                                </span> 
+                                <span  *ngIf="!a.prerrequisitos?"> </span> 
+                            </td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

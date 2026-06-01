@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecom Heroes 💻</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        #game-container canvas { display: block; }
+        #name-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            pointer-events: none; z-index: 10;
+        }
+        #name-form {
+            background: rgba(0,0,0,0.85); border: 2px solid #00ff88;
+            border-radius: 12px; padding: 30px 40px; text-align: center;
+            pointer-events: all; display: none;
+        }
+        #name-form h2 { color: #00ff88; font-family: monospace; font-size: 22px; margin-bottom: 16px; }
+        #name-form input {
+            background: #111; border: 1px solid #444; color: #fff;
+            font-size: 18px; padding: 10px 16px; border-radius: 6px;
+            width: 220px; text-align: center; font-family: monospace;
+            outline: none;
+        }
+        #name-form input:focus { border-color: #00ff88; }
+        #name-form button {
+            display: block; margin: 14px auto 0; background: #00ff88; color: #000;
+            border: none; padding: 10px 30px; border-radius: 6px; font-size: 16px;
+            font-weight: bold; cursor: pointer; font-family: monospace;
+        }
+        #name-form button:hover { background: #00cc66; }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+    <div id="name-overlay">
+        <div id="name-form">
+            <h2>TELECOM HEROES</h2>
+            <p style="color:#aaa; font-family:monospace; margin-bottom:14px; font-size:13px;">Ingresa tu nombre de ingeniero</p>
+            <input type="text" id="player-name" placeholder="Ingeniero..." maxlength="16" autocomplete="off" />
+            <button id="start-btn">INICIAR MISIÓN</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+    <script type="module" src="index.js"></script>
+</body>
+</html>
